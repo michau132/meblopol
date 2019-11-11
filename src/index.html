@@ -5,18 +5,20 @@
   <meta charset="utf-8">
   <title>Gulp Starter Kit</title>
   <!-- build:css -->
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500&display=swap&subset=latin-ext" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <!-- endbuild -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
-    
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 </head>
 
 <body>
   <div class="main-wrapper">
-    <header class="header">
+    <header class="header row">
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item">
@@ -34,61 +36,96 @@
         </ul>
       </nav>
     </header>
-    <div class="main-img">
-      <img src="./images/main.jpg" alt="">
+    <div class="main-img space-bot">
+      <img src="./img/main.jpg" alt="Główna siedziba">
     </div>
-    <section class="about-us-sec" id="o-nas">
-      <h1 class="title">Meblopol <span>Plus</span></h1>
-      <p class="description">Salon meblowy Meblopol Plus powstał w 1999 roku. Od 20 lat doradzamy i meblujemy Państwa
-        wnętrza. W swojej ofercie
-        posiadamy meble najlepszych polskich producentów, stawiamy na najwyższą jakość. Zapraszamy do naszego salonu,
-        gdzie
-        doradzimy oraz zaproponujemy ofertę jak najlepiej dopasowaną do Państwa potrzeb.
-
-        W razie konieczności, dysponujemy własnym transportem.
-
-        Zapraszamy!</p>
+    <section class="about-us-sec space-bot" id="o-nas">
+      <div class="row">
+        <h1 class="title">Meblopol <span>Plus</span></h1>
+        <p class="description">Salon meblowy Meblopol Plus powstał w 1999 roku. Od 20 lat doradzamy i meblujemy Państwa
+          wnętrza. W swojej ofercie
+          posiadamy meble najlepszych polskich producentów, stawiamy na najwyższą jakość. Zapraszamy do naszego salonu,
+          gdzie
+          doradzimy oraz zaproponujemy ofertę jak najlepiej dopasowaną do Państwa potrzeb.
+          <br>
+          W razie konieczności, dysponujemy własnym transportem.
+          <br />
+          <br />
+          Zapraszamy!</p>
+      </div>
     </section>
-    <div class="second-img">
-      <img src="./images/second.jpg" alt="sofas">
+    <div class="main-img space-bot">
+      <img src="./img/second.jpg" alt="sofas">
     </div>
-    <div class="offer">
-      <h2 class="title">Oferta</h2>
+    <div class="offer" id="oferta">
+      <h2 class="title offer__title">Oferta</h2>
       <ul class="offer__list">
-        <li class="offer__item"><a href="" class="offer__link">AS MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">AEK MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">ARKOS MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">BYDGOSKIE MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">ETAP SOFA</a></li>
-        <li class="offer__item"><a href="" class="offer__link">FOAM KOŁO MATERACE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">HAVEX MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">GALA COLLEZIONE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">MEBIN MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">MEBLOSOFT</a></li>
-        <li class="offer__item"><a href="" class="offer__link">MEBLOMAX</a></li>
-        <li class="offer__item"><a href="" class="offer__link">ORFEUSZ MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">OLEJNIKOWSKI MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">PAMIR MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">ROBERTO MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">STUBA MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">SPAR MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">SIGNAL MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">STOLMEB</a></li>
-        <li class="offer__item"><a href="" class="offer__link">SWIT SIT MEBLE</a></li>
-        <li class="offer__item"><a href="" class="offer__link">FABRYKA MEBLI TARANKO</a></li>
+        <div class="middle-box"></div>
+        <div class="group">
+          <li class="offer__item"><a href="" class="offer__link">AS MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">AEK MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">ARKOS MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">BYDGOSKIE MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">ETAP SOFA</a></li>
+        </div>
+        <div class="group">
+          <li class="offer__item"><a href="" class="offer__link">FOAM KOŁO MATERACE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">HAVEX MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">GALA COLLEZIONE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">MEBIN MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">MEBLOSOFT</a></li>
+        </div>
+        <div class="group">
+          <li class="offer__item"><a href="" class="offer__link">ORFEUSZ MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">OLEJNIKOWSKI MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">PAMIR MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">ROBERTO MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">STUBA MEBLE</a></li>
+        </div>
+        <div class="group">
+          <li class="offer__item"><a href="" class="offer__link">MEBLOMAX</a></li>
+          <li class="offer__item"><a href="" class="offer__link">SPAR MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">SIGNAL MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">STOLMEB</a></li>
+          <li class="offer__item"><a href="" class="offer__link">SWIT SIT MEBLE</a></li>
+          <li class="offer__item"><a href="" class="offer__link">FABRYKA MEBLI TARANKO</a></li>
+        </div>
       </ul>
     </div>
-    <div class="gallery" id="galeria">
+    <div class="gallery space-bot" id="galeria">
+      <h2 class="title gallery__title">Galeria</h2>
       <div class="gallery-cnt">
-        <img src="./images/IMG_111.webp" alt="" class="gallery__item">
-        <img src="./images/IMG_6392.webp" alt="" class="gallery__item">
-        <img src="./images/IMG_6393.webp" alt="" class="gallery__item">
+        <div class="gallery__item">
+          <div class="middle-box"></div>
+          <img src="./img/IMG_6388.JPG" alt="" class="gallery__img">
+        </div>
+        <div class="gallery__item">
+          <div class="middle-box"></div>
+          <img src="./img/IMG_6392.webp" alt="" class="gallery__img">
+        </div>
+        <div class="gallery__item">
+          <div class="middle-box"></div>
+          <img src="./img/IMG_6393.webp" alt="" class="gallery__img">
+        </div>
+        <div class="gallery__item">
+          <div class="middle-box"></div>
+          <img src="./img/IMG_6393.webp" alt="" class="gallery__img">
+        </div>
+        <div class="gallery__item">
+          <div class="middle-box"></div>
+          <img src="./img/IMG_6393.webp" alt="" class="gallery__img">
+        </div>
       </div>
     </div>
-    <div id="mapid"></div>
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-      crossorigin=""></script>
+    <div class="map">
+      <h2 class="title map__title">
+        Gdzie nas znajdziesz
+      </h2>
+      <div id="mapid" class="space-bot"></div>
+      <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+    </div>
 
 
     <div class="contact" id="kontakt">
@@ -99,7 +136,7 @@
       <form class="contact-form">
         <input type="text" name="name" placeholder="Imię i Nazwisko">
         <input type="text" name="contact" placeholder="Kontakt">
-        <textarea placeholder="Wiadomość" cols="30" rows="10"></textarea>
+        <textarea placeholder="Wiadomość" cols="30" rows="1"></textarea>
         <button type="submit">Wyślij</button>
       </form>
     </div>
