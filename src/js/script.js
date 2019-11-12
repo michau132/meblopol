@@ -1,5 +1,5 @@
 $('.gallery-cnt').slick({
-  speed: 300,
+  speed: 500,
   slidesToShow: 1,
   centerMode: true,
   variableWidth: true,
@@ -13,9 +13,34 @@ $('.gallery-cnt').slick({
       adaptiveHeight: true,
     }
   }, ]
-}).on('beforeChange', function (e) {
-  e.preventDefault()
+}).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+
+  slick.$slides.each(function(index) {
+
+    if(index === nextSlide) {
+      $(this).children('.overlay').remove()
+      return
+    }
+
+    if ($(this).children('.overlay').length == 0) {
+      
+      $(this).append('<div class="overlay"></div>')
+    }
+
+  })
 })
+// .on('afterChange', function (event, slick, currentSlide, nextSlide) {
+//   slick.$slides.each(function (index) {
+//     //$(this).children('.overlay').remove()
+
+
+//     if (index === currentSlide) {
+//       $(this).children('.overlay').remove()
+//       console.log('e')
+//       return
+//     }
+//   })
+// })
 
 
 var textarea = document.querySelector("textarea");
@@ -41,32 +66,9 @@ textarea.oninput = function () {
   textarea.setAttribute("rows", rows);
 };
 
-$('.slick-arrow').on('click', function (e) {
-  clearMiddleBoxes()
-  addMiddleBoxes()
+const input = $('#name')
+
+$('.contact-form').on('submit', function(e) {
+  e.preventDefault()
+  $('#loading').css('display', 'block')
 })
-
-const el = document.querySelectorAll('.gallery__item')
-
-function clearMiddleBoxes() {
-  el.forEach(a => {
-    a.querySelector('.middle-box').style.right = '';
-    a.querySelector('.middle-box').style.left = '';
-  })
-}
-
-function addMiddleBoxes() {
-  const el = document.querySelectorAll('.gallery__item')
-
-
-
-  el.forEach(a => {
-
-    if (a.classList.contains('slick-active')) {
-      console.log(a.previousSibling)
-      a.previousSibling.querySelector('.middle-box').style.right = '10%';
-      a.nextSibling.querySelector('.middle-box').style.left = '10%';
-    }
-  })
-}
-addMiddleBoxes()

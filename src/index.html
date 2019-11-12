@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 
 <head>
   <meta charset="utf-8">
-  <title>Gulp Starter Kit</title>
+  <meta property="og:title" content="Meblopol Plus">
+  <meta property="og:description" content="Meblopol Plus to salon meblowy, gdzie doradzamy i meblujemy Państwa wnętrza">
+  <title>Meblopol Plus</title>
+  <meta itemprop="name" content="Meblopol Plus">
+  <meta itemprop="description" content="Meblopol Plus to salon meblowy, gdzie doradzamy i meblujemy Państwa wnętrza">
   <!-- build:css -->
   <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500&display=swap&subset=latin-ext" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -12,11 +16,18 @@
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
   <!-- Make sure you put this AFTER Leaflet's CSS -->
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 </head>
 
 <body>
+  <div class="sending" id="loading">
+    <div class="sending__content">
+      <div class="lds-dual-ring"></div>
+      <p class="sending__message">Wysyłam wiadomość</p>
+    </div>
+  </div>
   <div class="main-wrapper">
     <header class="header row">
       <nav class="nav">
@@ -95,23 +106,37 @@
     <div class="gallery space-bot" id="galeria">
       <h2 class="title gallery__title">Galeria</h2>
       <div class="gallery-cnt">
-        <div class="gallery__item">
+        <div class="gallery__item ">
           <div class="middle-box"></div>
-          <img src="./img/IMG_6388.JPG" alt="" class="gallery__img">
+          <div class="overlay"></div>
+          <img src="./img/IMG_6393.webp" alt="" class="gallery__img">
         </div>
-        <div class="gallery__item">
+        <div class="gallery__item ">
           <div class="middle-box"></div>
+          <div class="overlay"></div>
           <img src="./img/IMG_6392.webp" alt="" class="gallery__img">
         </div>
-        <div class="gallery__item">
+        <div class="gallery__item ">
+          <div class="overlay"></div>
           <div class="middle-box"></div>
           <img src="./img/IMG_6393.webp" alt="" class="gallery__img">
         </div>
-        <div class="gallery__item">
+        <div class="gallery__item ">
+          <div class="overlay"></div>
           <div class="middle-box"></div>
-          <img src="./img/IMG_6393.webp" alt="" class="gallery__img">
+          <img data-lazy="./img/IMG_6393.webp" alt="" class="gallery__img">
         </div>
-        <div class="gallery__item">
+        <div class="gallery__item ">
+          <div class="middle-box"></div>
+          <img data-lazy="./img/IMG_6393.webp" alt="" class="gallery__img">
+        </div>
+        <div class="gallery__item ">
+          <div class="overlay"></div>
+          <div class="middle-box"></div>
+          <img data-lazy="./img/IMG_6388.JPG" alt="" class="gallery__img">
+        </div>
+        <div class="gallery__item ">
+          <div class="overlay"></div>
           <div class="middle-box"></div>
           <img src="./img/IMG_6393.webp" alt="" class="gallery__img">
         </div>
@@ -134,9 +159,9 @@
       <p class="info">16-400 Suwałki</p>
       <p class="info">87 563 08 35</p>
       <form class="contact-form">
-        <input type="text" name="name" placeholder="Imię i Nazwisko">
-        <input type="text" name="contact" placeholder="Kontakt">
-        <textarea placeholder="Wiadomość" cols="30" rows="1"></textarea>
+        <input type="text" name="name" placeholder="Imię i Nazwisko" id="name" required>
+        <input type="text" name="contact" placeholder="Kontakt" id="contact" required>
+        <textarea required id="message" placeholder="Wiadomość" cols="30" rows="1"></textarea>
         <button type="submit">Wyślij</button>
       </form>
     </div>
