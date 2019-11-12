@@ -71,4 +71,8 @@ const input = $('#name')
 $('.contact-form').on('submit', function(e) {
   e.preventDefault()
   $('#loading').css('display', 'block')
+
+  setTimeout(function() {
+    $('#loading').css('display', 'none')
+  }, 8000)
 })
