@@ -102,9 +102,13 @@ a {
 .nav {
     padding: 20px 0;
     display: flex;
-    justify-content: flex-end;
-    max-width: 900px;
+    justify-content: center;
     margin: 0 auto;
+
+    @media (min-width: 900px) {
+        justify-content: flex-end;
+        max-width: 900px;
+    }
 }
 
 .nav__list {
@@ -134,8 +138,10 @@ a {
 }
 
 .about-us-sec {
+    overflow: hidden;
     padding: 25px 0;
     background-color: #3F5D73;
+    position: relative;
 
     @media (min-width: 1024px) {
         padding: 70px;
@@ -156,6 +162,85 @@ a {
     }
 }
 
+.rectangles {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+@media (min-width:1250px) {
+
+    .rectangle__big {
+        display: inline-block;
+        width: 280px;
+        height: 280px;
+        background-color: #9F5A66;
+        position: relative;
+        &--first {
+            z-index: 1;
+        }
+    }
+    .rectangle__medium {
+        width: 94px;
+        height: 94px;
+        background-color: #FF5759;
+        position: absolute;
+
+        &--left {
+            top: 71px;
+            left: -63px;
+        }
+
+        &--right {
+            left: 84px;
+            top: -77px;
+        }
+
+        &--corner {
+            bottom: -33px;
+            left: -54px;
+        }
+    }
+
+    .rectangle__mb {
+        width: 158px;
+        height: 158px;
+        background-color: #FF5759;
+        position: absolute;
+        z-index: 10;
+
+        &--right {
+            top: -141px;
+            left: -131px;
+        }
+
+        &--left {
+            left: -131px;
+            top: -341px;
+        }
+    }
+
+    .rectangle--sm {
+        width: 66px;
+        height: 66px;
+        background-color: #FF5759;
+        position: absolute;
+        top: 71px;
+        left: 62px;
+    }
+    
+    .rectangle__big--first {
+        transform: rotate(45deg) translate(458px, 81px);
+    
+    
+    }
+    
+    .rectangle__big--second {
+        transform: rotate(45deg) translate(58px, -77px);
+    }
+}
+
+
+
 .title {
     color: #fff;
     text-align: center;
@@ -168,11 +253,26 @@ a {
     span {
         color: #929EA7;
     }
+
+    
+    @media (min-width:900px) {
+        font-size: 50px;   
+    }
+
+    &--sec {
+        font-size: 35px;
+    }
 }
+
+
 
 .description {
     color: #B2BEC7;
     line-height: 32px;
+
+    @media (min-width:900px) {
+        line-height: 45px;
+    }
 }
 
 .offer {
