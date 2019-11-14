@@ -1,47 +1,59 @@
-$('.gallery-cnt').slick({
-  speed: 500,
-  slidesToShow: 1,
-  centerMode: true,
-  variableWidth: true,
-  adaptiveHeight: true,
-  responsive: [{
-    breakpoint: 768,
-    settings: {
-      slidesToShow: 1,
-      centerMode: true,
-      variableWidth: true,
-      adaptiveHeight: true,
+$('.owl-carousel').owlCarousel({
+  stagePadding: 350,
+  loop: true,
+  margin: 20,
+  smartSpeed: 700,
+  nav: true,
+  navText: [
+    '',
+    ''
+  ],
+  navContainerClass: 'custom-nav',
+  responsive: {
+    0: {
+      items:1,
+      stagePadding: 50
+    },
+    400: {
+      items: 1,
+      stagePadding: 100
+    },
+    600: {
+      items: 1,
+      stagePadding: 150
+    },
+    1000: {
+      items: 1,
+      stagePadding: 250,
+      slideBy: 3
+    },
+    1500: {
+      stagePadding: 450,
+      items: 1
     }
-  }, ]
-}).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+  }
+});
 
-  slick.$slides.each(function(index) {
-
-    if(index === nextSlide) {
-      $(this).children('.overlay').remove()
-      return
-    }
-
-    if ($(this).children('.overlay').length == 0) {
-      
-      $(this).append('<div class="overlay"></div>')
-    }
-
+$('.owl-carousel').on('translated.owl.carousel', function(params) {
+  const $activeSlide = $(params.target).find('.owl-item.active')
+  console.log($activeSlide)
+  $activeSlide.prev().one('click', function(e) {
+    $('.owl-prev').click()
+  })
+  
+  $activeSlide.next().one('click', function() {
+    $('owl-next').click()
   })
 })
-// .on('afterChange', function (event, slick, currentSlide, nextSlide) {
-//   slick.$slides.each(function (index) {
-//     //$(this).children('.overlay').remove()
 
+const $activeSlide = $('.owl-item.active')
+$activeSlide.prev().one('click', function (e) {
+  $('.owl-prev').click()
+})
 
-//     if (index === currentSlide) {
-//       $(this).children('.overlay').remove()
-//       console.log('e')
-//       return
-//     }
-//   })
-// })
-
+$activeSlide.next().one('click', function () {
+  $('owl-next').click()
+})
 
 var textarea = document.querySelector("textarea");
 var limitRows = 125;
