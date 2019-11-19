@@ -5,8 +5,8 @@ $('.owl-carousel').owlCarousel({
   smartSpeed: 700,
   nav: true,
   navText: [
-    '',
-    ''
+    'prev',
+    'next'
   ],
   navContainerClass: 'custom-nav',
   responsive: {
@@ -33,26 +33,48 @@ $('.owl-carousel').owlCarousel({
     }
   }
 });
+let $activeSlide;
 
 $('.owl-carousel').on('translated.owl.carousel', function(params) {
-  const $activeSlide = $(params.target).find('.owl-item.active')
-  console.log($activeSlide)
+  if ($activeSlide) {
+    $activeSlide.prev().off()
+    $activeSlide.next().off()
+  }
+  $activeSlide = $(params.target).find('.owl-item.active')
+
+  $activeSlide.prev().find('.middle-box').css('display', 'block').css('left', 'unset').css('right', '9%')
+  $activeSlide.next().find('.middle-box').css('display', 'block').css('left', '9%').css('right', 'unset')
+  $activeSlide.prev().find('.gallery__line').removeClass('gallery__right-line').addClass('gallery__left-line').css('display', 'block')
+  $activeSlide.next().find('.gallery__line').removeClass('gallery__left-line').addClass('gallery__right-line').css('display', 'block')
+
   $activeSlide.prev().one('click', function(e) {
     $('.owl-prev').click()
   })
   
   $activeSlide.next().one('click', function() {
-    $('owl-next').click()
+    $('.owl-next').click()
   })
 })
 
-const $activeSlide = $('.owl-item.active')
-$activeSlide.prev().one('click', function (e) {
-  $('.owl-prev').click()
+$('.owl-carousel').on('translate.owl.carousel drag.owl.carousel', function (params) {
+  $(params.target).find('.middle-box').css('display', 'none')
+  $(params.target).find('.gallery__line').css('display', 'none')
 })
 
-$activeSlide.next().one('click', function () {
-  $('owl-next').click()
+$('.gallery__item').append('<div class="gallery__line"></div>')
+
+const $initActive = $('.owl-item.active')
+$initActive.prev().one('click', function (e) {
+  $('.owl-prev').click()
+})
+$initActive.prev().find('.middle-box').css('left', 'unset').css('right', '9%').css('display', 'block')
+$initActive.prev().find('.gallery__line').addClass('gallery__left-line').css('display', 'block')
+
+$initActive.next().find('.gallery__line').addClass('gallery__right-line').css('display', 'block')
+$initActive.next().find('.middle-box').css('left', '9%').css('right', 'unset').css('display', 'block')
+
+$initActive.next().one('click', function () {
+  $('.owl-next').click()
 })
 
 var textarea = document.querySelector("textarea");
@@ -77,14 +99,60 @@ textarea.oninput = function () {
   messageLastScrollHeight = textarea.scrollHeight;
   textarea.setAttribute("rows", rows);
 };
-
-const input = $('#name')
-
-$('.contact-form').on('submit', function(e) {
+$('.contact__form').on('submit', function(e) {
+  
+  const name = $('#name')
+  const contact = $('#contact')
+  const message = $('textarea')
   e.preventDefault()
-  $('#loading').css('display', 'block')
+  if (name.val().length == 0 || contact.val() == 0 || message.val() == 0) {
+    return
+  }
+  const a = {
+    message: message.val(),
+    name: name.val(),
+    contact: contact.val()
+  }
 
-  setTimeout(function() {
-    $('#loading').css('display', 'none')
-  }, 8000)
+  const headers = new Headers();
+  headers.append('Content-Type', 'application / json')
+  const $loader = $('#loading')
+  $loader.css('display', 'block')
+  const response = $('#response')
+  fetch('http://localhost:4000/send-email', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message: message.val(),
+      name: name.val(),
+      contact: contact.val()
+    })
+  }).then(res => res.json())
+  .then(res => {
+    if (!res.success) {
+      response.addClass('error')
+    }
+    $loader.css('display', 'none')
+    response.css('transform', 'translateX(-50%) translateY(0)')
+    response.find('.response__text').text(res.message)
+
+    // setTimeout(() => {
+    //   response.css('transform', 'translateX(-50%) translateY(500px)')
+    //   response.find('.response__text').text('')
+    // }, 3000);
+  })
+  .catch(err => {
+    console.log(err)
+    $loader.css('display', 'none')
+    response.addClass('error').css('transform', 'translateX(-50%) translateY(0)')
+    response.find('.response__text').text()
+    setTimeout(() => {
+      response.css('transform', 'translateX(-50%) translateY(500px)')
+      response.find('.response__text').text('')
+    }, 3000);
+  })
+  
 })
