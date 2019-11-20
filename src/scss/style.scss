@@ -564,7 +564,7 @@ a {
 
     input,
     textarea {
-        background-color: #3F5D73 !important;
+        background-color: #3F5D73;
         border: none;
         border-bottom: 2px solid #fff;
         color: #CCD4DA;
@@ -601,6 +601,13 @@ a {
         }
     }
 
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #3F5D73 inset !important;
 }
 
 

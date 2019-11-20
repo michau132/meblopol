@@ -28,8 +28,12 @@ $('.owl-carousel').owlCarousel({
       slideBy: 3
     },
     1500: {
-      stagePadding: 450,
-      items: 1
+      items: 1,
+      stagePadding: 350,
+    },
+    1700: {
+      items: 1,
+      stagePadding: 450
     }
   }
 });
