@@ -17,8 +17,8 @@ var config = {
   dist: 'dist/',
   src: 'src/',
   cssin: 'src/css/**/*.css',
-  jsin: 'src/js/**/*.js',
-  imgin: 'src/img/**/*.{jpg,jpeg,png,gif,webp}',
+  jsin: ['src/js/**/*.js', '!js/**/*.min.js'],
+  imgin: 'src/img/**/*.{jpg,jpeg,png,gif,webp,JPG}',
   htmlin: 'src/*.html',
   scssin: 'src/scss/**/*.scss',
   cssout: 'dist/css/',
@@ -67,7 +67,9 @@ gulp.task('css', function() {
 gulp.task('js', function() {
   return gulp.src(config.jsin)
     .pipe(concat(config.jsoutname))
-    .pipe(uglify())
+    .pipe(uglify()).on('error', function(params) {
+      console.log(params)
+    })
     .pipe(gulp.dest(config.jsout));
 });
 
