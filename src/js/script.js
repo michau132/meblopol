@@ -11,6 +11,7 @@ $('.owl-carousel').owlCarousel({
   navContainerClass: 'custom-nav',
   autoplay: true,
   autoplayTimeout: 3000,
+  autoplayHoverPause: true,
   responsive: {
     0: {
       items:1,
