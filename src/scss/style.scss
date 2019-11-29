@@ -305,11 +305,11 @@ a {
 
 .offer {
     background-color: #3F5D73;
-    padding: 30px 0;
     text-align: center;
     overflow: hidden;
     color: #B2BEC7;
     letter-spacing: 1px;
+    padding: 30px 15px;
 
     @media (min-width:1024px) {
         padding: 60px 0;
@@ -523,6 +523,7 @@ a {
 
     .contact__info {
         position: relative;
+        margin-bottom: 30px;
     }
 
     @media (min-width:1024px) {
@@ -654,6 +655,9 @@ input:-webkit-autofill:active  {
     margin-top: 20px;
 }
 .second-desc {
-    margin-bottom: 20px;
     text-transform: uppercase;
+    line-height: 24px;
+    @media (min-width: 1024px) {
+        margin-bottom: 20px;
+    }
 }

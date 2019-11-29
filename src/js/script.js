@@ -15,15 +15,18 @@ $('.owl-carousel').owlCarousel({
   responsive: {
     0: {
       items:1,
-      stagePadding: 50
+      stagePadding: 50,
+      autoplay: false
     },
     400: {
       items: 1,
-      stagePadding: 100
+      stagePadding: 100,
+      autoplay: false
     },
     600: {
       items: 1,
-      stagePadding: 150
+      stagePadding: 150,
+      autoplay: false
     },
     1000: {
       items: 1,
